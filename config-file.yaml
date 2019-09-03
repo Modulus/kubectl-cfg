@@ -12,10 +12,10 @@ spec:
     # url for downloading the package archive:
     uri: https://github.com/Modulus/kubectl-cfg/archive/0.0.5.zip
     # sha256sum of the file downloaded above:
-    sha256: "04e956287b569126f10c2345ff81c8fea96641abeb2dd36d32437b8e951eba07"
+    sha256: "38b1d5a74ed4bcb35b9a1884acd875c07319c2a4142507bb1d47a29f007e63ff"
     # copy the used files out of the zip archive, defaults to `[{from: "*", to: "."}]`
     files:
-    - from: "/kubectl-cfg*/*.sh" # path to the files extracted from archive
+    - from: "/kubectl-config-file*/*.sh" # path to the files extracted from archive
       to: "."               # '.' refers to the root of plugin install directory
     bin: "./kubectl-config-file.sh"  # path to the plugin executable after copying files above
   shortDescription: List config files, and links chosen config file to ~/.kube/config without messing up your files.
