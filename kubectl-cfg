@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+
+# optional argument handling
+if [[ "$1" == "use" ]]
+then
+    config=~/.kube/$2
+    echo "changing config to $config"
+    ln -sf $config ~/.kube/config
+    ls -la ~/.kube | grep "config ->"
+    exit 0
+fi
+
+# optional argument handling
+if [[ "$1" == "list" ]]
+then
+    files=$(find ~/.kube -maxdepth 1 -type f)
+
+    for file in $files
+    do
+        start=${file%/*}//
+        length_start=${#start}
+        length_full=${#file}
+        name=$(echo $file | cut -c$length_start-$length_full)
+        if [[ $name != *".log"* ]] && [[ $name != *"backup"* ]]
+        then
+            echo "$name"
+        fi
+    done
+    exit 0
+fi
+
+
