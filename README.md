@@ -8,10 +8,10 @@ This is a kubectl krew plugin to work with ~/.kube config files without messing 
 
 # How to run
 ```
-kubectl cfg list
+kubectl config-file list
 ```
 
 ```
-kubectl cfg use minikube.conf
+kubectl config-file use minikube.conf
 ```
 
