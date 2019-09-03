@@ -10,7 +10,7 @@ spec:
       matchExpressions:
       - {key: os, operator: In, values: [darwin, linux]}
     # url for downloading the package archive:
-    uri: https://github.com/modulus/cfg/releases/0.0.5.zip
+    uri: https://github.com/Modulus/kubectl-cfg/archive/0.0.5.zip
     # sha256sum of the file downloaded above:
     sha256: "7cfbda0d4f785edcee1977d9b422fa978a8e7ccbd1540a3b60b15abefc672ea0"
     # copy the used files out of the zip archive, defaults to `[{from: "*", to: "."}]`
