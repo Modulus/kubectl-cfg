@@ -1,7 +1,7 @@
 apiVersion: krew.googlecontainertools.github.com/v1alpha2
 kind: Plugin
 metadata:
-  name: cfg               # plugin name must match your manifest file name (e.g. foo.yaml)
+  name: config-file               # plugin name must match your manifest file name (e.g. foo.yaml)
 spec:
   version: "0.0.6"       # required, must be in semver format, prefixed with "v"
   platforms:
@@ -10,9 +10,9 @@ spec:
       matchExpressions:
       - {key: os, operator: In, values: [darwin, linux]}
     # url for downloading the package archive:
-    uri: https://github.com/Modulus/kubectl-cfg/archive/0.0.5.zip
+    uri: https://github.com/Modulus/kubectl-cfg/archive/0.0.6.zip
     # sha256sum of the file downloaded above:
-    sha256: "38b1d5a74ed4bcb35b9a1884acd875c07319c2a4142507bb1d47a29f007e63ff"
+    sha256: "d5a6460356add84a0ccb3c43f440a97e15ee2ead3e35f3001df0d62f62d4e27f"
     # copy the used files out of the zip archive, defaults to `[{from: "*", to: "."}]`
     files:
     - from: "/kubectl-config-file*/*.sh" # path to the files extracted from archive
