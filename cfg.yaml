@@ -3,7 +3,7 @@ kind: Plugin
 metadata:
   name: cfg               # plugin name must match your manifest file name (e.g. foo.yaml)
 spec:
-  version: "1.0.0"       # required, must be in semver format, prefixed with "v"
+  version: "0.0.3"       # required, must be in semver format, prefixed with "v"
   platforms:
   # specify installation script for linux and darwin (macOS)
   - selector:             # a regular Kubernetes selector
@@ -12,10 +12,10 @@ spec:
     # url for downloading the package archive:
     uri: https://github.com/modulus/cfg/releases/1.0.0.zip
     # sha256sum of the file downloaded above:
-    sha256: "xx"
+    sha256: "a6f9f088c3de6065d7fb19beb9a721cd2abb641921b46f01481cba03565d0d6a"
     # copy the used files out of the zip archive, defaults to `[{from: "*", to: "."}]`
     files:
-    - from: "/kubectl-cfg" # path to the files extracted from archive
+    - from: "/*/kubectl-cfg.sh" # path to the files extracted from archive
       to: "."               # '.' refers to the root of plugin install directory
     bin: "./kubectl-cfg"  # path to the plugin executable after copying files above
   shortDescription: List config files, and links chosen config file to ~/.kube/config without messing up your files.
