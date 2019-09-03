@@ -12,7 +12,7 @@ spec:
     # url for downloading the package archive:
     uri: https://github.com/modulus/cfg/releases/0.0.5.zip
     # sha256sum of the file downloaded above:
-    sha256: "25bee73ddb0edbc56c1ed36cd271f577302017be0a4a8450def81e86acf16b94"
+    sha256: "7cfbda0d4f785edcee1977d9b422fa978a8e7ccbd1540a3b60b15abefc672ea0"
     # copy the used files out of the zip archive, defaults to `[{from: "*", to: "."}]`
     files:
     - from: "/kubectl-cfg*/*.sh" # path to the files extracted from archive
