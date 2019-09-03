@@ -24,7 +24,6 @@ list_all_configs(){
 
 list_active_config(){
     ls -la ~/.kube | grep "config ->"
-    print_help
 }
 
 change_config(){

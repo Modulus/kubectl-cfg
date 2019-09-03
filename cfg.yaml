@@ -3,7 +3,7 @@ kind: Plugin
 metadata:
   name: cfg               # plugin name must match your manifest file name (e.g. foo.yaml)
 spec:
-  version: "0.0.4"       # required, must be in semver format, prefixed with "v"
+  version: "0.0.5"       # required, must be in semver format, prefixed with "v"
   platforms:
   # specify installation script for linux and darwin (macOS)
   - selector:             # a regular Kubernetes selector
@@ -12,7 +12,7 @@ spec:
     # url for downloading the package archive:
     uri: https://github.com/modulus/cfg/releases/1.0.0.zip
     # sha256sum of the file downloaded above:
-    sha256: "5257433a364a98ef5398ce8facb49d84e03227de60a355b5b8ecbe3e3dd7bdcc"
+    sha256: "25bee73ddb0edbc56c1ed36cd271f577302017be0a4a8450def81e86acf16b94"
     # copy the used files out of the zip archive, defaults to `[{from: "*", to: "."}]`
     files:
     - from: "/kubectl-cfg*/*.sh" # path to the files extracted from archive
