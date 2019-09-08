@@ -6,6 +6,20 @@ print_help(){
     echo "Kubectl cfg use minikube.conf"
 }
 
+test_apps(){
+    apps=("ls", "ln", "find", "grep", "cut", "echo")
+
+    all_ok = true;
+    for app in $apps
+    do
+        if [ -x "$(command -v $app) 2> /dev/null" ];
+        then
+            all_ok = false;
+        fi
+    done
+    return $all_ok
+}
+
 list_all_configs(){
     files=$(find ~/.kube -maxdepth 1 -type f)
 
