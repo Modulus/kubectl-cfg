@@ -9,7 +9,7 @@ spec:
       matchExpressions:
       - {key: os, operator: In, values: [darwin, linux]}
     uri: https://github.com/Modulus/kubectl-cfg/archive/0.0.6.zip
-    sha256: "5c097a9e74509d1129bbc417de9bc26d1cc496643d73e687645b74ee0b094f2e"
+    sha256: "d3921d4fe8cb86f29b49b20f262438ee3743780d6cdbd3045fa01552aa5a395f"
     files:
     - from: "/kubectl-config-file*/*.sh"
       to: "."              

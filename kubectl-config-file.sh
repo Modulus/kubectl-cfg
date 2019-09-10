@@ -78,9 +78,9 @@ run(){
     fi
 }
 
-has_apps = test_for_apps
+has_apps=test_for_apps
 
-if $has_apps == 1
+if [ $has_apps == 1 ]; then
     run
 
 else
