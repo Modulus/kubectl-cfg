@@ -7,7 +7,7 @@ print_help(){
 }
 
 test_for_apps(){
-    apps=("ls" "ln" "find" "grep" "cut" "echo")
+    apps=("snadder" "ls" "ln" "find" "grep" "cut" "echo")
 
     all_ok=1;
     for app in $apps
@@ -15,14 +15,9 @@ test_for_apps(){
         if [ "$(command -v $app) 2> /dev/null" ];
         then
             $all_ok=0;
-            echo "OK"
-        else
-            echo "NOT OK"
         fi
     done
 
-    echo "Checking"
-    echo "$all_ok"
     if [ $all_ok == 0 ]; then
        echo "Missing one of these programs: ${apps[@]}"
        echo "Consult your package manager to install"
@@ -57,7 +52,10 @@ change_config(){
     ln -sf $config ~/.kube/config
 }
 
-run(){
+
+has_apps=test_for_apps
+
+if [ $has_apps == 1 ]; then
     if [ -z "$1" ]
     then
         list_active_config
@@ -76,12 +74,6 @@ run(){
         print_help
         exit 0
     fi
-}
-
-has_apps=test_for_apps
-
-if [ $has_apps == 1 ]; then
-    run
 
 else
     exit 1
