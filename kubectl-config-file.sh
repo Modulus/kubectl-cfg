@@ -6,17 +6,28 @@ print_help(){
     echo "Kubectl cfg use minikube.conf"
 }
 
-test_apps(){
-    apps=("ls", "ln", "find", "grep", "cut", "echo")
+test_for_apps(){
+    apps=("ls" "ln" "find" "grep" "cut" "echo")
 
-    all_ok = true;
+    all_ok=1;
     for app in $apps
     do
-        if [ -x "$(command -v $app) 2> /dev/null" ];
+        if [ "$(command -v $app) 2> /dev/null" ];
         then
-            all_ok = false;
+            $all_ok=0;
+            echo "OK"
+        else
+            echo "NOT OK"
         fi
     done
+
+    echo "Checking"
+    echo "$all_ok"
+    if [ $all_ok == 0 ]; then
+       echo "Missing one of these programs: ${apps[@]}"
+       echo "Consult your package manager to install"
+    fi
+
     return $all_ok
 }
 
@@ -46,23 +57,34 @@ change_config(){
     ln -sf $config ~/.kube/config
 }
 
-if [ -z "$1" ]
-then
-    list_active_config
-elif [[ "$1" == "use" ]] && [[ ! -z "$2" ]]
-then
-    change_config $2
-    list_active_config
-    exit 0
+run(){
+    if [ -z "$1" ]
+    then
+        list_active_config
+    elif [[ "$1" == "use" ]] && [[ ! -z "$2" ]]
+    then
+        change_config $2
+        list_active_config
+        exit 0
 
-elif [[ "$1" == "list" ]]
-then
-    list_all_configs
-    exit 0
+    elif [[ "$1" == "list" ]]
+    then
+        list_all_configs
+        exit 0
+    else
+        echo "Missing arguments"
+        print_help
+        exit 0
+    fi
+}
+
+has_apps = test_for_apps()
+
+if $has_apps == 1
+    run()
+
 else
-    echo "Missing arguments"
-    print_help
-    exit 0
+    exit 1
 fi
 
 
