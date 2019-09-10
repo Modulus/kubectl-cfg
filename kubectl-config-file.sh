@@ -78,10 +78,10 @@ run(){
     fi
 }
 
-has_apps = test_for_apps()
+has_apps = test_for_apps
 
 if $has_apps == 1
-    run()
+    run
 
 else
     exit 1
