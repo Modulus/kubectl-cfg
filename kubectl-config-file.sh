@@ -7,27 +7,20 @@ print_help(){
 }
 
 test_for_apps(){
-    apps=("snadder" "ls" "ln" "find" "grep" "cut" "echo")
-
-    all_ok=1;
+    local apps=("ls" "ln" "find" "grep" "cut" "echo" "nein");
+    local has_apps=1;
     for app in $apps
     do
-        if [ "$(command -v $app) 2> /dev/null" ];
+        if ! [  -x "$(command -v $app)" ];
         then
-            $all_ok=0;
+            has_apps=0;
         fi
     done
-
-    if [ $all_ok == 0 ]; then
-       echo "Missing one of these programs: ${apps[@]}"
-       echo "Consult your package manager to install"
-    fi
-
-    return $all_ok
+    echo $has_apps
 }
 
 list_all_configs(){
-    files=$(find ~/.kube -maxdepth 1 -type f)
+    local files=$(find ~/.kube -maxdepth 1 -type f)
 
     for file in $files
     do
@@ -53,9 +46,9 @@ change_config(){
 }
 
 
-has_apps=test_for_apps
+has_apps=$(test_for_apps)
 
-if [ $has_apps == 1 ]; then
+if [[ $has_apps == 1 ]]; then
     if [ -z "$1" ]
     then
         list_active_config
@@ -76,6 +69,7 @@ if [ $has_apps == 1 ]; then
     fi
 
 else
+    echo "Missing one of the commands: ls ln find grep cut echo. Consult your package manager for how to install these"
     exit 1
 fi
 
